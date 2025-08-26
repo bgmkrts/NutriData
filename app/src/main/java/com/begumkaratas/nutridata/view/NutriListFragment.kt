@@ -1,4 +1,4 @@
-package com.begumkaratas.nutridata
+package com.begumkaratas.nutridata.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.begumkaratas.nutridata.databinding.FragmentNutriListBinding
 
 class NutriListFragment : Fragment() {
-
+//https://raw.githubusercontent.com/atilsamancioglu/BTK20-JSONVeriSeti/refs/heads/master/besinler.json
     private var _binding: FragmentNutriListBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {

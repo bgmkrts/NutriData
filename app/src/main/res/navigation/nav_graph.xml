@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nutriListFragment"
-        android:name="com.begumkaratas.nutridata.NutriListFragment"
+        android:name="com.begumkaratas.nutridata.view.NutriListFragment"
         android:label="fragment_nutri_list"
         tools:layout="@layout/fragment_nutri_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/nutriDetailFragment"
-        android:name="com.begumkaratas.nutridata.NutriDetailFragment"
+        android:name="com.begumkaratas.nutridata.view.NutriDetailFragment"
         android:label="fragment_nutri_detail"
         tools:layout="@layout/fragment_nutri_detail" >
         <argument

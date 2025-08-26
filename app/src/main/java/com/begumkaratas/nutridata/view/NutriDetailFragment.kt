@@ -1,4 +1,4 @@
-package com.begumkaratas.nutridata
+package com.begumkaratas.nutridata.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,7 +1,8 @@
-package com.begumkaratas.nutridata
+package com.begumkaratas.nutridata.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.begumkaratas.nutridata.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

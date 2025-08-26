@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_weight="2">
+
+    </ImageView>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Besin İsmi:"
+            android:textSize="30dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <TextView
+            android:id="@+id/calory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kalorisi :"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_margin="5dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

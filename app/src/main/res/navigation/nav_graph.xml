@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nutriListFragment">
+
+    <fragment
+        android:id="@+id/nutriListFragment"
+        android:name="com.begumkaratas.nutridata.NutriListFragment"
+        android:label="fragment_nutri_list"
+        tools:layout="@layout/fragment_nutri_list" >
+        <action
+            android:id="@+id/action_nutriListFragment_to_nutriDetailFragment"
+            app:destination="@id/nutriDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutriDetailFragment"
+        android:name="com.begumkaratas.nutridata.NutriDetailFragment"
+        android:label="fragment_nutri_detail"
+        tools:layout="@layout/fragment_nutri_detail" >
+        <argument
+            android:name="nutriId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

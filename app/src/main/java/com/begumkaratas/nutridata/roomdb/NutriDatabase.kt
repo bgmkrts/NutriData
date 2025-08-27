@@ -12,7 +12,7 @@ abstract class NutriDatabase : RoomDatabase() {
 
 
     //Singleton
-
+//farklı threadlerden aynı anda bir veriyi değiştirmeye çalışırsak aynı anda yazmayı okumayı vs. engelleyecek
     companion object {
 
         @Volatile
@@ -26,7 +26,7 @@ abstract class NutriDatabase : RoomDatabase() {
             }
         }
 
-
+//roomdatabase
         private fun databaseOlustur(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             NutriDatabase::class.java, "nutridatabase"

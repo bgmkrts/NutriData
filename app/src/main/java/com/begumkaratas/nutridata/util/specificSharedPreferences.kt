@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 
 class SpecificSharedPreferences {
-
+//en son verinin ne zaman çekildiğini tutar
     companion object {
 
         private const val TIME = "time"

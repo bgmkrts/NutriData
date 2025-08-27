@@ -29,7 +29,7 @@ abstract class NutriDatabase : RoomDatabase() {
 
         private fun databaseOlustur(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            NutriDatabase::class.java, "besindatabase"
+            NutriDatabase::class.java, "nutridatabase"
         ).build()
 
     }

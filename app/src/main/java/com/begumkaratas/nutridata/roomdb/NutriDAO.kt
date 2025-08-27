@@ -12,13 +12,16 @@ interface NutriDAO {
     @Insert
     suspend fun insertAll(vararg nutri: Nutri):List<Long>
     //Eklediği besinlerin idsini long olarak geri veriyor.
-
-    @Query("Delete from nutri")
+    @Query("Select * from nutri")
     suspend fun getAll(): List<Nutri>
 
     @Query("SELECT * FROM nutri where uuid=:id")
     suspend fun getNutri(id: Int): Nutri
 
-    @Query("Select * from nutri")
+    @Query("Delete from nutri")
     suspend fun deleteAll()
+
+
+
+
 }

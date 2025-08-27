@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.begumkaratas.nutridata.adapter.NutriRecyclerAdapter
 import com.begumkaratas.nutridata.databinding.FragmentNutriListBinding
 import com.begumkaratas.nutridata.service.NutriAPI
 import com.begumkaratas.nutridata.viewmodel.NutriListViewModel
@@ -20,6 +21,8 @@ import retrofit2.create
 class NutriListFragment : Fragment() {
     private var _binding: FragmentNutriListBinding? = null
     private val binding get() = _binding!!
+
+    private val nutriRecyclerAdapter=NutriRecyclerAdapter(arrayListOf())
 
     private lateinit var viewModel:NutriListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +43,7 @@ class NutriListFragment : Fragment() {
         viewModel=ViewModelProvider(this)[NutriListViewModel::class.java]
         viewModel.refreshData()
         binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
-        //binding.recyclerView.adapter=
+        binding.recyclerView.adapter=nutriRecyclerAdapter
         binding.swiperefreshlayout.setOnRefreshListener {
             binding.recyclerView.visibility=View.GONE
             binding.nutriErrorMessage.visibility=View.GONE
@@ -71,8 +74,9 @@ class NutriListFragment : Fragment() {
         observeLiveData()
     }
     private fun observeLiveData(){
+
         viewModel.nutries.observe(viewLifecycleOwner){
-            //adapter
+            nutriRecyclerAdapter.nutriListUpdate(it)
             binding.recyclerView.visibility=View.VISIBLE
         }
         viewModel.nutriErrorMessage.observe(viewLifecycleOwner){

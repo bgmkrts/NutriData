@@ -24,7 +24,7 @@ class NutriListViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val nutriApiService = NutriApiService()
     private val specificSharedPreferences = SpecificSharedPreferences(getApplication())
-    private val updateTime = 10 * 60 * 1000 * 1000 * 1000L
+    private val updateTime = 0.1 * 60 * 1000 * 1000 * 1000L
 
      fun refreshData() {
         val saveTime = specificSharedPreferences.zamaniAl()

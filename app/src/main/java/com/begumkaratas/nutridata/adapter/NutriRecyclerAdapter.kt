@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.begumkaratas.nutridata.databinding.NutriRecyclerRowBinding
 import com.begumkaratas.nutridata.model.Nutri
+import com.begumkaratas.nutridata.util.fotoDownload
+import com.begumkaratas.nutridata.util.placeholderYap
 import com.begumkaratas.nutridata.view.NutriListFragmentDirections
 import com.begumkaratas.nutridata.adapter.NutriRecyclerAdapter.nutriViewHolder as nutriViewHolder1
 
@@ -37,5 +39,6 @@ class NutriRecyclerAdapter(val nutriList:ArrayList<Nutri>):RecyclerView.Adapter<
             val action=NutriListFragmentDirections.actionNutriListFragmentToNutriDetailFragment(nutriList[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }
+        holder.binding.imageView.fotoDownload(nutriList[position].gorsel, placeholderYap(holder.itemView.context))
     }
 }

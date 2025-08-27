@@ -27,12 +27,13 @@ class SpecificSharedPreferences {
             return SpecificSharedPreferences()
         }
 
-        fun zamaniKaydet(zaman: Long) {
-            sharedPreferences?.edit()?.putLong(TIME, zaman)?.apply()
-        }
 
-        fun zamaniAl(): Long {
-            return sharedPreferences?.getLong(TIME, 0) ?: 0
-        }
+    }
+    fun zamaniKaydet(zaman: Long) {
+        sharedPreferences?.edit()?.putLong(TIME, zaman)?.apply()
+    }
+
+    fun zamaniAl(): Long {
+        return sharedPreferences?.getLong(TIME, 0) ?: 0
     }
 }

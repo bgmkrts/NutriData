@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.begumkaratas.nutridata.databinding.FragmentNutriListBinding
 import com.begumkaratas.nutridata.service.NutriAPI
+import com.begumkaratas.nutridata.viewmodel.NutriListViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,6 +20,8 @@ import retrofit2.create
 class NutriListFragment : Fragment() {
     private var _binding: FragmentNutriListBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var viewModel:NutriListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,7 +37,17 @@ class NutriListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel=ViewModelProvider(this)[NutriListViewModel::class.java]
+        viewModel.refreshData()
+        binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
+        //binding.recyclerView.adapter=
         binding.swiperefreshlayout.setOnRefreshListener {
+            binding.recyclerView.visibility=View.GONE
+            binding.nutriErrorMessage.visibility=View.GONE
+            binding.nutriLoading.visibility=View.VISIBLE
+
+            viewModel.refreshDataFromInternet()
+            binding.swiperefreshlayout.isRefreshing=false
 
         }
     //--------------retrofit kullanımı----------------------
@@ -53,6 +68,32 @@ class NutriListFragment : Fragment() {
                 println(it.besinIsim)
             }
         } */
+        observeLiveData()
+    }
+    private fun observeLiveData(){
+        viewModel.nutries.observe(viewLifecycleOwner){
+            //adapter
+            binding.recyclerView.visibility=View.VISIBLE
+        }
+        viewModel.nutriErrorMessage.observe(viewLifecycleOwner){
+            if(it){
+                binding.nutriErrorMessage.visibility=View.VISIBLE
+                binding.recyclerView.visibility=View.GONE
+            }else{
+                binding.nutriErrorMessage.visibility=View.GONE
+
+            }
+        }
+        viewModel.nutriLoading.observe(viewLifecycleOwner){
+            if(it){
+                binding.nutriErrorMessage.visibility=View.GONE
+                binding.recyclerView.visibility=View.GONE
+                binding.nutriLoading.visibility=View.VISIBLE
+
+            }else{
+                binding.nutriLoading.visibility=View.GONE
+            }
+        }
     }
 
     override fun onDestroyView() {

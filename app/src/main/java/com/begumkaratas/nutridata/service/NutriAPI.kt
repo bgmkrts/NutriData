@@ -8,7 +8,7 @@ interface NutriAPI {
 
     //BASE URL->https://raw.githubusercontent.com/
     //ENDPOINT->https://raw.githubusercontent.com/atilsamancioglu/BTK20-JSONVeriSeti/refs/heads/master/besinler.json
-    @GET("atilsamancioglu/BTK20-JSONVeriSeti/refs/heads/master/besinler.json")
+    @GET("atilsamancioglu/BTK20-JSONVeriSeti/master/besinler.json")
    suspend fun getNutri():List<Nutri>
 
 }
